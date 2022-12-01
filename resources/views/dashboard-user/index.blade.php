@@ -8,8 +8,10 @@
 </head>
 <body>
   berhasil login
-  @can('admin')
+  @can('isAdmin')
       hai admin
+  @elsecan('isUser')
+      hai user
   @endcan
   <form action="/logout" method="post">
     @csrf
