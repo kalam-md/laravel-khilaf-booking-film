@@ -21,6 +21,5 @@ class DashboardAdminController extends Controller
         } else {
             abort(403);
         }
-        // return view('dashboard-admin.index');
     }
 }
