@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\User\DashboardUserController;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // autentikasi
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -27,6 +30,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard-user.index');
-})->middleware('auth');
+// dashboard admin
+Route::get('/dashboard-admin', [DashboardAdminController::class, 'index']);
+
+// dashboard-user
+Route::get('/dashboard-user', [DashboardUserController::class, 'index']);
