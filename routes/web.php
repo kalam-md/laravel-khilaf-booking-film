@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\User\DashboardUserController;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\StudioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'index']);
 
 // dashboard-user
 Route::get('/dashboard-user', [DashboardUserController::class, 'index']);
+
+// studio
+Route::resource('/dashboard-admin/studios', StudioController::class);
