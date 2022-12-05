@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\User\MovieController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\User\DashboardUserController;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\DashboardAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,4 @@ Route::get('/dashboard-admin', [DashboardAdminController::class, 'index']);
 
 // dashboard-user
 Route::get('/dashboard-user', [DashboardUserController::class, 'index']);
+Route::resource('/dashboard-user/movies', MovieController::class);
