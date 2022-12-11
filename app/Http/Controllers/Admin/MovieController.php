@@ -9,6 +9,13 @@ use App\Models\Category;
 
 class MovieController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role: isAdmin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +48,21 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'trailer' => 'required|max:255',
+            'synopsis' => 'required|max:255',
+            'poster' => 'image|file|mimes:png,jpg,jpeg|max:2048',
+            'category_id' => 'required',
+        ]);
+
+        if ($request->file('poster')) {
+            $validatedData['poster'] = $request->file('poster')->store('movie-images');
+        }
+
+        Movie::create($validatedData);
+
+        return redirect('/dashboard-admin/movies')->with('success', 'New movie has been added!');
     }
 
     /**
@@ -50,9 +71,12 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Movie $movie, Category $category)
     {
-        //
+        return view('dashboard-admin.movie.show', [
+            'category' => $category,
+            'movie' => $movie,
+        ]);
     }
 
     /**
