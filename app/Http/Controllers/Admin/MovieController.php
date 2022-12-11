@@ -85,9 +85,12 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $movie)
     {
-        //
+        return view('dashboard-admin.movie.edit', [
+            'movie' => $movie,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -97,7 +100,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Movie $movie)
     {
         //
     }
