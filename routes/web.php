@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\User\DashboardUserController;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\StudioController;
+use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\User\DashboardUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +31,17 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-// dashboard admin
-Route::get('/dashboard-admin', [DashboardAdminController::class, 'index']);
+// admin
+Route::prefix('/dashboard-admin')->middleware('auth')->group(function () {
+    // dashboard admin
+    Route::get('/', [DashboardAdminController::class, 'index']);
+    // admin category
+    Route::resource('/categories', CategoryController::class);
+    // admin studio
+    Route::resource('/studios', StudioController::class);
+    // admin movie
+    Route::resource('/movies', MovieController::class);
+});
 
 // dashboard-user
 Route::get('/dashboard-user', [DashboardUserController::class, 'index']);
-
-// studio
-Route::resource('/dashboard-admin/studios', StudioController::class);

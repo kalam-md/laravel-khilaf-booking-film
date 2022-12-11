@@ -5,14 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StudioController extends Controller
+class MovieController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role: admin');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +14,7 @@ class StudioController extends Controller
      */
     public function index()
     {
-        return view('dashboard-admin.studio.index');
+        //
     }
 
     /**
