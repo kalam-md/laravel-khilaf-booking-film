@@ -131,8 +131,13 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        //
+        if ($movie->poster) {
+            Storage::delete($movie->poster);
+        }
+        Movie::destroy($movie->id);
+
+        return redirect('/dashboard-admin/movies')->with('success', 'Movie has been deleted!');
     }
 }
