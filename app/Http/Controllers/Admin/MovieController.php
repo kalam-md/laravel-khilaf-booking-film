@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Movie;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class MovieController extends Controller
 {
@@ -27,7 +28,9 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard-admin.movie.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
