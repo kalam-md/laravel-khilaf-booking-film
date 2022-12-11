@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -102,7 +103,26 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'trailer' => 'required|max:255',
+            'synopsis' => 'required|max:255',
+            'poster' => 'image|file|mimes:png,jpg,jpeg|max:2048',
+            'category_id' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('poster')) {
+            if ($request->oldPoster) {
+                Storage::delete($request->oldPoster);
+            }
+            $validatedData['poster'] = $request->file('poster')->store('movie-images');
+        }
+
+        Movie::where('id', $movie->id)->update($validatedData);
+
+        return redirect('/dashboard-admin/movies')->with('success', 'Movie has been updated!');
     }
 
     /**
