@@ -102,8 +102,10 @@ class StudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Studio $studio)
     {
-        //
+        Studio::destroy($studio->id);
+
+        return redirect('/dashboard-admin/studios')->with('success', 'Studio has been deleted!');
     }
 }
