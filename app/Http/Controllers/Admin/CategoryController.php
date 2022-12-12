@@ -69,9 +69,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('dashboard-admin.category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -81,9 +83,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255|unique:categories',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Category::where('id', $category->id)->update($validatedData);
+
+        return redirect('/dashboard-admin/categories')->with('success', 'Category has been updated!');
     }
 
     /**
@@ -94,6 +104,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        Category::destroy($category->id);
+
+        return redirect('/dashboard-admin/categories')->with('success', 'Category has been deleted!');
     }
 }
