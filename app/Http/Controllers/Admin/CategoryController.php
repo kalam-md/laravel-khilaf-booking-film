@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role: isAdmin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard-admin.category.index', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
