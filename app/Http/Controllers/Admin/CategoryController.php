@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -31,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard-admin.category.create');
     }
 
     /**
@@ -42,7 +43,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:categories',
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect('/dashboard-admin/categories')->with('success', 'New category has been added!');
     }
 
     /**
