@@ -69,9 +69,11 @@ class StudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Studio $studio)
     {
-        //
+        return view('dashboard-admin.studio.edit', [
+            'studio' => $studio
+        ]);
     }
 
     /**
@@ -81,9 +83,17 @@ class StudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Studio $studio)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255|unique:studios',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Studio::where('id', $studio->id)->update($validatedData);
+
+        return redirect('/dashboard-admin/studios')->with('success', 'Studio has been updated!');
     }
 
     /**
