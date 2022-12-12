@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Studio;
 
 class StudioController extends Controller
 {
@@ -20,9 +21,10 @@ class StudioController extends Controller
      */
     public function index()
     {
-        return view('dashboard-admin.studio.index');
+        return view('dashboard-admin.studio.index', [
+            'studios' => Studio::all()
+        ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +32,7 @@ class StudioController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard-admin.studio.create');
     }
 
     /**
@@ -41,7 +43,13 @@ class StudioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:studios',
+        ]);
+
+        Studio::create($validatedData);
+
+        return redirect('/dashboard-admin/studios')->with('success', 'New studio has been added!');
     }
 
     /**
