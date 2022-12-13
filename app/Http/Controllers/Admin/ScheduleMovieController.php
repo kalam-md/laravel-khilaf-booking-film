@@ -103,8 +103,10 @@ class ScheduleMovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ScheduleMovie $scheduleMovie)
     {
-        //
+        ScheduleMovie::destroy($scheduleMovie->id);
+
+        return redirect('/dashboard-admin/schedule-movies')->with('success', 'Schedule movie has been deleted!');
     }
 }

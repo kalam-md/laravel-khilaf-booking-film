@@ -80,7 +80,7 @@
                     <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $schedule->studio->name }}</td>
                     <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><span>Rp. </span>{{ $schedule->price }}</td>
                     <td class="relative whitespace-nowrap py-2 text-right text-sm font-medium flex">
-                      <a href="/dashboard-admin/schedules/{{ $schedule->id }}/edit" class="text-gray-400 hover:text-gray-500 mr-2">
+                      <a href="/dashboard-admin/schedule-movies/{{ $schedule->id }}/edit" class="text-gray-400 hover:text-gray-500 mr-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" class="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round"
@@ -88,7 +88,7 @@
                         </svg>
                       </a>
 
-                      <form action="/dashboard-admin/schedules/{{ $schedule->id }}" method="post">
+                      <form action="/dashboard-admin/schedule-movies/{{ $schedule->id }}" method="post">
                         @method('delete')
                         @csrf
                         <button type="submit" class="text-gray-400 hover:text-gray-500" onclick="return confirm('Are you sure?')">
