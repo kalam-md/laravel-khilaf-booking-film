@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Studio extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
+
+    public function scheduleMovies()
+    {
+        return $this->hasMany(ScheduleMovie::class);
+    }
 }
