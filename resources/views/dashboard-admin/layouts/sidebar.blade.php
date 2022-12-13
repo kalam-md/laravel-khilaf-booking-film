@@ -119,7 +119,7 @@
     <!-- Navigation -->
     <nav class="px-3 mt-6">
       <div class="space-y-1">
-        <a href="dashboard-admin"
+        <a href="{{ route('dashboard-admin') }}"
           class="bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"
           aria-current="page">
           <svg class="text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
