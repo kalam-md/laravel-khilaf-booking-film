@@ -35,7 +35,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 // admin
 Route::prefix('/dashboard-admin')->middleware('auth')->group(function () {
     // dashboard admin
-    Route::get('/', [DashboardAdminController::class, 'index']);
+    Route::get('/', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
     // admin category
     Route::resource('/categories', CategoryController::class);
     // admin studio
