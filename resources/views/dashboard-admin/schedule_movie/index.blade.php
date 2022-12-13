@@ -37,7 +37,7 @@
             architecto.</p>
         </div>
         <div class="mt-4 sm:mt-0">
-          <a href="schedule_movies/create">
+          <a href="schedule-movies/create">
             <button type="button"
             class="mt-4 inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
             Schedule Movie</button>
@@ -76,6 +76,9 @@
                   <tr>
                     <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">{{ $loop->iteration }}</td>
                     <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $schedule->start_date }}</td>
+                    <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $schedule->movie->name }}</td>
+                    <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $schedule->studio->name }}</td>
+                    <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><span>Rp. </span>{{ $schedule->price }}</td>
                     <td class="relative whitespace-nowrap py-2 text-right text-sm font-medium flex">
                       <a href="/dashboard-admin/schedules/{{ $schedule->id }}/edit" class="text-gray-400 hover:text-gray-500 mr-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

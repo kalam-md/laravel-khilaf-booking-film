@@ -24,7 +24,9 @@ class ScheduleMovieController extends Controller
     public function index()
     {
         return view('dashboard-admin.schedule_movie.index', [
-            'schedules' => ScheduleMovie::all()
+            'schedules' => ScheduleMovie::all(),
+            'movies' => Movie::all(),
+            'studios' => Studio::all(),
         ]);
     }
 
@@ -35,7 +37,10 @@ class ScheduleMovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard-admin.schedule_movie.create', [
+            'studios' => Studio::all(),
+            'movies' => Movie::all(),
+        ]);
     }
 
     /**
@@ -46,7 +51,16 @@ class ScheduleMovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'start_date' => 'required',
+            'price' => 'required',
+            'movie_id' => 'required',
+            'studio_id' => 'required',
+        ]);
+
+        ScheduleMovie::create($validatedData);
+
+        return redirect('/dashboard-admin/schedule-movies')->with('success', 'New schedule movie has been added!');
     }
 
     /**
