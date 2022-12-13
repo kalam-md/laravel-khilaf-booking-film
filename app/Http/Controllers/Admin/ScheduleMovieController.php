@@ -80,9 +80,13 @@ class ScheduleMovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ScheduleMovie $scheduleMovie)
     {
-        //
+        return view('dashboard-admin.schedule_movie.edit', [
+            'schedule' => $scheduleMovie,
+            'studios' => Studio::all(),
+            'movies' => Movie::all(),
+        ]);
     }
 
     /**
@@ -92,9 +96,18 @@ class ScheduleMovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ScheduleMovie $scheduleMovie)
     {
-        //
+        $validatedData = $request->validate([
+            'start_date' => 'required',
+            'price' => 'required',
+            'movie_id' => 'required',
+            'studio_id' => 'required',
+        ]);
+
+        ScheduleMovie::where('id', $scheduleMovie->id)->update($validatedData);
+
+        return redirect('/dashboard-admin/schedule-movies')->with('success', 'Schedule movie has been updated!');
     }
 
     /**
