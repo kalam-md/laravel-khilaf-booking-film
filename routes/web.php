@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\StudioController;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\ScheduleMovieController;
 use App\Http\Controllers\User\DashboardUserController;
 
 /*
@@ -41,6 +42,8 @@ Route::prefix('/dashboard-admin')->middleware('auth')->group(function () {
     Route::resource('/studios', StudioController::class);
     // admin movie
     Route::resource('/movies', MovieController::class);
+    // admin schedule movie
+    Route::resource('/schedule-movies', ScheduleMovieController::class);
 });
 
 // dashboard-user
