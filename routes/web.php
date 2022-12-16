@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\StudioController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\ScheduleMovieController;
 use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\User\MovieUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,6 @@ Route::prefix('/dashboard-admin')->middleware('auth')->group(function () {
 
 // dashboard-user
 Route::get('/dashboard-user', [DashboardUserController::class, 'index']);
+
+// dashboard-user
+Route::get('/dashboard-user/movies', [MovieUserController::class, 'index']);
