@@ -15,7 +15,7 @@ class MovieUserController extends Controller
         ]);
     }
 
-    public function indexShow($id)
+    public function movieShow($id)
     {
         $movie = ScheduleMovie::with('movie', 'studio')->find($id);
         return $movie;
