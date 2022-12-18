@@ -10,6 +10,6 @@ class MovieUserController extends Controller
 {
     public function index()
     {
-        return view();
+        return view('dashboard-user.movie.index');
     }
 }
