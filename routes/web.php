@@ -47,8 +47,11 @@ Route::prefix('/dashboard-admin')->middleware('auth')->group(function () {
     Route::resource('/schedule-movies', ScheduleMovieController::class);
 });
 
-// dashboard-user
-Route::get('/dashboard-user', [DashboardUserController::class, 'index']);
+// user
+Route::prefix('/dashboard-user')->middleware('auth')->group(function () {
+    // dashboard-user
+    Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
 
-// dashboard-user
-Route::get('/dashboard-user/movies', [MovieUserController::class, 'index']);
+    // dashboard-user
+    Route::get('/movies', [MovieUserController::class, 'index'])->name('dashboard-user.movies');
+});
