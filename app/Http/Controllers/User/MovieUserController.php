@@ -10,6 +10,14 @@ class MovieUserController extends Controller
 {
     public function index()
     {
-        return view('dashboard-user.movie.index');
+        return view('dashboard-user.movie.index', [
+            'schedules' => ScheduleMovie::all()
+        ]);
+    }
+
+    public function indexShow($id)
+    {
+        $movie = ScheduleMovie::with('movie', 'studio')->find($id);
+        return $movie;
     }
 }

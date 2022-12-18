@@ -54,4 +54,5 @@ Route::prefix('/dashboard-user')->middleware('auth')->group(function () {
 
     // dashboard-user
     Route::get('/movies', [MovieUserController::class, 'index'])->name('dashboard-user.movies');
+    Route::get('/movies/{movie}', [MovieUserController::class, 'indexShow'])->name('dashboard-user.movies.indexShow');
 });
