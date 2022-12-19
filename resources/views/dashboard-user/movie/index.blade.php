@@ -50,6 +50,11 @@
           <dt class="text-gray-500">Studio</dt>
           <dd class="text-gray-900" id="studio">---</dd>
         </div>
+
+        <div class="py-3 flex justify-between text-sm font-medium">
+          <dt class="text-gray-500">Price</dt>
+          <dd class="text-gray-900" id="price">---</dd>
+        </div>
       </dl>
     </div>
     <div>
@@ -79,6 +84,7 @@
           document.getElementById('movie-trailer').href = data.movie.trailer
           document.getElementById('release-date').innerHTML = data.start_date
           document.getElementById('studio').innerHTML = data.studio.name
+          document.getElementById('price').innerHTML = 'Rp. ' + data.price
           document.getElementById('booking').href = 'movies/' + data.id + '/booking'
         }
     });
