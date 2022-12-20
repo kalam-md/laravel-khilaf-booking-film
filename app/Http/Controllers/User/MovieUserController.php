@@ -8,6 +8,12 @@ use App\Models\ScheduleMovie;
 
 class MovieUserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role: isUser');
+    }
+
     public function index()
     {
         return view('dashboard-user.movie.index', [
