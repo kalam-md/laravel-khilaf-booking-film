@@ -52,7 +52,7 @@ Route::prefix('/dashboard-admin')->middleware('auth')->group(function () {
 Route::prefix('/dashboard-user')->middleware('auth')->group(function () {
     // dashboard-user
     Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
-    // bookin movie
+    // booking movie
     Route::get('/movies', [MovieUserController::class, 'index'])->name('dashboard-user.movies');
     Route::get('/movies/{movie}', [MovieUserController::class, 'movieShow'])->name('dashboard-user.movies.movieShow');
     Route::get('/movies/{movie}/booking', [BookingMovieController::class, 'booking'])->name('dashboard-user.booking');

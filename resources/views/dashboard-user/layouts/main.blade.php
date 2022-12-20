@@ -8,6 +8,13 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
   @vite('resources/css/app.css')
+
+  <style>
+    .selected {
+      color: #4f46e5;
+    }
+  </style>
+
 </head>
 <body class="h-full overflow-hidden">
   
