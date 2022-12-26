@@ -6,10 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dashboard Admin</title>
   @vite('resources/css/app.css')
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="h-full">
   
-  <div class="min-h-full">
+  <div class="min-h-full" x-data="{ open: false }">
     
     @include('dashboard-admin.layouts.sidebar')
 
@@ -18,7 +19,7 @@
       <!-- Search header -->
       <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:hidden">
         <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
-        <button type="button"
+        <button type="button" @click="open = true"
           class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
           <span class="sr-only">Open sidebar</span>
           <!-- Heroicon name: outline/menu-alt-1 -->
@@ -30,43 +31,6 @@
 
         <div class="flex-1 flex justify-between px-4 sm:px-6 lg:px-8">
           <div class="flex items-center">
-            <!-- Profile dropdown -->
-            <div class="ml-3 relative">
-              <div>
-                <button type="button"
-                  class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-                  id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                  <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="">
-                </button>
-              </div>
-
-              <div
-                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none"
-                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <div class="py-1" role="none">
-                  <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                    id="user-menu-item-0">View profile</a>
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                    id="user-menu-item-1">Settings</a>
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                    id="user-menu-item-2">Notifications</a>
-                </div>
-                <div class="py-1" role="none">
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                    id="user-menu-item-3">Get desktop app</a>
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                    id="user-menu-item-4">Support</a>
-                </div>
-                <div class="py-1" role="none">
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                    id="user-menu-item-5">Logout</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -94,7 +58,6 @@
   <script>
     let dProfile = document.getElementById("open-profile");
     let mMenu = document.getElementById("open-menu");
-
     function openProfile() {
       if (dProfile.classList.contains('hidden')) {
         dProfile.classList.remove('hidden');
@@ -102,7 +65,6 @@
         dProfile.classList.add('hidden');
       }
     }
-
     function openMenu() {
       if (mMenu.classList.contains('hidden')) {
         mMenu.classList.remove('hidden');
@@ -110,7 +72,6 @@
         mMenu.classList.add('hidden');
       }
     }
-
     function closeMenu() {
       if (mMenu.classList.contains('hidden')) {
         mMenu.classList.remove('hidden');
@@ -118,7 +79,6 @@
         mMenu.classList.add('hidden');
       }
     }
-
     window.onclick = function (event) {
       let profileDropdown = document.getElementById('profile-dropdown');
       if (!profileDropdown.contains(event.target) && !dProfile.classList.contains('hidden')) {
