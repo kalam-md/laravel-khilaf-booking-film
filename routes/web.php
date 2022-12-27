@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ScheduleMovieController;
 use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\User\MovieUserController;
 use App\Http\Controllers\User\BookingMovieController;
+use App\Http\Controllers\User\BookingHistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +58,5 @@ Route::prefix('/dashboard-user')->middleware('auth')->group(function () {
     Route::get('/movies/{movie}', [MovieUserController::class, 'movieShow'])->name('dashboard-user.movies.movieShow');
     Route::get('/movies/{movie}/booking', [BookingMovieController::class, 'booking'])->name('dashboard-user.booking');
     Route::post('/movies/{movie}/booking', [BookingMovieController::class, 'bookingStore'])->name('dashboard-user.bookingStore');
+    Route::get('/movies/booking/history', [BookingHistoryController::class, 'index'])->name('dashboard-user.booking.index');
 });

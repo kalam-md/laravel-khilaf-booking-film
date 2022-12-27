@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Models\Booking;
 use App\Models\ScheduleMovie;
 use App\Models\Seat;
-use Illuminate\Support\Facades\DB;
 
 class BookingMovieController extends Controller
 {

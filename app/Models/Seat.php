@@ -10,9 +10,4 @@ class Seat extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-
-    public function schedules()
-    {
-        return $this->belongsToMany(ScheduleMovie::class, 'bookings');
-    }
 }
