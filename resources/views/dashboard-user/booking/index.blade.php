@@ -9,7 +9,7 @@
     </div>
 
     <!-- History Booking -->
-    {{-- <section class="mt-8 pb-16">
+    <section class="mt-8 pb-16">
       <div class="-mx-4 mt-10 ring-1 ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
         <table class="min-w-full divide-y divide-gray-300">
           <thead>
@@ -53,7 +53,7 @@
           </tbody>
         </table>
       </div>
-    </section> --}}
+    </section>
 
   </div>
 </main>
