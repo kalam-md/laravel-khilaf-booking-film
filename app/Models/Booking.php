@@ -13,13 +13,13 @@ class Booking extends Model
     protected $guarded = ['id'];
     protected $table = 'bookings';
 
-    public function seats()
+    public function user()
     {
-        return $this->belongsToMany(Seat::class, 'bookings', 'seat_id', 'schedule_id,');
+        return $this->belongsTo(User::class);
     }
 
-    public function schedules()
+    public function schedule()
     {
-        return $this->belongsToMany(ScheduleMovie::class, 'bookings', 'seat_id', 'schedule_id');
+        return $this->belongsTo(ScheduleMovie::class);
     }
 }

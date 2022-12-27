@@ -21,8 +21,8 @@ class ScheduleMovie extends Model
         return $this->belongsTo(Studio::class);
     }
 
-    public function seats()
+    public function bookings()
     {
-        return $this->belongsToMany(Seat::class, 'bookings');
+        return $this->hasMany(Booking::class);
     }
 }
