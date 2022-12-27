@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('schedule_id');
-            $table->foreignId('seat_id');
-            $table->boolean('available');
+            $table->foreignId('schedule_id')->constrained('schedule_movies');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('seat_name');
+            $table->integer('total_price');
             $table->timestamps();
         });
     }
