@@ -56,4 +56,5 @@ Route::prefix('/dashboard-user')->middleware('auth')->group(function () {
     Route::get('/movies', [MovieUserController::class, 'index'])->name('dashboard-user.movies');
     Route::get('/movies/{movie}', [MovieUserController::class, 'movieShow'])->name('dashboard-user.movies.movieShow');
     Route::get('/movies/{movie}/booking', [BookingMovieController::class, 'booking'])->name('dashboard-user.booking');
+    Route::post('/movies/{movie}/booking', [BookingMovieController::class, 'bookingStore'])->name('dashboard-user.bookingStore');
 });

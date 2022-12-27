@@ -13,6 +13,6 @@ class Seat extends Model
 
     public function schedules()
     {
-        return $this->belongsToMany(ScheduleMovie::class)->using(Booking::class);
+        return $this->belongsToMany(ScheduleMovie::class, 'bookings');
     }
 }
