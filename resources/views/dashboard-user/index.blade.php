@@ -26,8 +26,8 @@
             </div>
             <div class="relative">
               <div class="sm:text-center">
-                <h2 class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">Welcome to home, User</h2>
-                <p class="mt-6 mx-auto max-w-2xl text-lg text-indigo-200">Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique pellentesque.</p>
+                <h2 class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">Welcome to home, {{ Auth::user()->name }}</h2>
+                {{-- <p class="mt-6 mx-auto max-w-2xl text-lg text-indigo-200">Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique pellentesque.</p> --}}
               </div>
             </div>
           </div>
