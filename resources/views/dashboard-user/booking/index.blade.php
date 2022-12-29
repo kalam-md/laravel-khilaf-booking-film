@@ -35,7 +35,7 @@
               </td>
               <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">{{ $booking->schedule->movie->name }}</td>
               <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">{{ $booking->schedule->start_date }}</td>
-              <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">Studio #1</td>
+              <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">{{ $booking->schedule->studio->name }}</td>
               <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">{{ $booking->seat_name }}</td>
               <td class="px-3 py-3.5 text-sm text-gray-500 border-t border-gray-200">
                 <span>Rp.</span> {{ $booking->schedule->price }}

@@ -168,9 +168,8 @@
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-xl font-semibold text-gray-900">Transactions History</h1>
-        <p class="mt-2 text-sm text-gray-700">A table of placeholder stock market data that does not make any
-          sense.</p>
+        <h1 class="text-xl font-semibold text-gray-900">Bookings History</h1>
+        <p class="mt-2 text-sm text-gray-700">The following table displays the movie booking transactions that occurred.</p>
       </div>
     </div>
     
@@ -182,50 +181,41 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th scope="col"
-                    class="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                    Transaction ID</th>
-                  <th scope="col"
-                    class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Movie
-                    Name
+                    class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                    Username
                   </th>
                   <th scope="col"
-                    class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">User
-                    Name
+                    class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Movie Name
                   </th>
+                  <th scope="col"
+                    class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    Date</th>
                   <th scope="col"
                     class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">
                     Studio</th>
                   <th scope="col"
                     class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Booking Date</th>
+                    Seat Name</th>
                   <th scope="col"
                     class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Price
                   </th>
-                  <th scope="col" class="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-6">
-                    <span class="sr-only">See</span>
+                  <th scope="col"
+                    class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Total Price
                   </th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
+                @foreach($bookings as $booking)
                 <tr>
-                  <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">AAPS0L</td>
-                  <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">Chase &amp; Co.</td>
-                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Kalam</td>
-                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Studio 3</td>
-                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">13 July 2022</td>
-                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Rp. 35.000</td>
-                  <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <a href="#" class="text-gray-400 hover:text-gray-500">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </a>
-                  </td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 sm:pl-6">{{ $booking->user->name }}</td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">{{ $booking->schedule->movie->name }}</td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">{{ $booking->schedule->start_date }}</td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">{{ $booking->schedule->studio->name }}</td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">{{ $booking->seat_name }}</td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Rp. {{ $booking->schedule->price }}</td>
+                  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Rp. {{ $booking->total_price }}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
