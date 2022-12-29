@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MovieController extends Controller
 {
@@ -15,6 +16,14 @@ class MovieController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role: isAdmin');
+
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            return $next($request);
+        });
     }
 
     /**

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\ScheduleMovie;
 use App\Models\Seat;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingMovieController extends Controller
 {
@@ -14,6 +15,14 @@ class BookingMovieController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role: isUser');
+
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            return $next($request);
+        });
     }
 
     public function booking($id)

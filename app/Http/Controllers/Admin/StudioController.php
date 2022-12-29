@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Studio;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StudioController extends Controller
 {
@@ -12,6 +13,14 @@ class StudioController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role: admin');
+
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            return $next($request);
+        });
     }
 
     /**
