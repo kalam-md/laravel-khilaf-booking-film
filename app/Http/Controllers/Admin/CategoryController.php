@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -12,6 +13,14 @@ class CategoryController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role: isAdmin');
+
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            return $next($request);
+        });
     }
     /**
      * Display a listing of the resource.
@@ -104,7 +113,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        
+
         Category::destroy($category->id);
 
         return redirect('/dashboard-admin/categories')->with('success', 'Category has been deleted!');

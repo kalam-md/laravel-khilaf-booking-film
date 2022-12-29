@@ -7,13 +7,22 @@ use Illuminate\Http\Request;
 use App\Models\Studio;
 use App\Models\Movie;
 use App\Models\ScheduleMovie;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ScheduleMovieController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role: admin');
+        $this->middleware('role: isAdmin');
+
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            return $next($request);
+        });
     }
 
     /**

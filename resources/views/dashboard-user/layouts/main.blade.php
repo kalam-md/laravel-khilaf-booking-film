@@ -17,6 +17,7 @@
 
 </head>
 <body class="h-full overflow-hidden">
+  @include('sweetalert::alert')
   
   <div class="h-full flex" x-data="{ open: false }">
     <!-- Narrow sidebar -->

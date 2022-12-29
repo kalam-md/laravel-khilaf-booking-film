@@ -9,6 +9,7 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="h-full">
+  @include('sweetalert::alert')
   
   <div class="min-h-full" x-data="{ open: false }">
     
