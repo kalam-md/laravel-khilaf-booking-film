@@ -19,10 +19,8 @@
               <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">Date</th>
               <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">Studio</th>
               <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">Seat Name</th>
-              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Price</th>
-              <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                <span class="sr-only">See</span>
-              </th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Sub Price</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">TotalPrice</th>
             </tr>
           </thead>
           <tbody>
@@ -40,11 +38,12 @@
               <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">Studio #1</td>
               <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell border-t border-gray-200">{{ $booking->seat_name }}</td>
               <td class="px-3 py-3.5 text-sm text-gray-500 border-t border-gray-200">
+                <span>Rp.</span> {{ $booking->schedule->price }}
+              </td>
+              <td class="px-3 py-3.5 text-sm text-gray-500 border-t border-gray-200">
                 <span>Rp.</span> {{ $booking->total_price }}
               </td>
               <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium border-t border-transparent">
-                <button type="button" class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">See Ticket<span class="sr-only"></span></button>
-    
                 <div class="absolute right-6 left-0 -top-px h-px bg-gray-200"></div>
               </td>
             </tr>
