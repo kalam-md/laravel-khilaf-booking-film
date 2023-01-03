@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
+  <link rel="icon" href="{{ asset('img/logo.png') }}">
+  <title>Khilaf Movie</title>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script>document.documentElement.classList.add('js')</script>
 </head>
