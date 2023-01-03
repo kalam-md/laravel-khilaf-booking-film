@@ -24,7 +24,7 @@
     <div class="hidden w-28 bg-indigo-700 overflow-y-auto md:block">
       <div class="w-full py-6 flex flex-col items-center">
         <div class="flex-shrink-0 flex items-center">
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white" alt="Workflow">
+          <img class="h-8 w-auto" src="{{ asset('img/logo-white.png') }}" alt="Workflow">
         </div>
         <div class="flex-1 mt-6 w-full px-2 space-y-1">
           <a href="{{ route('dashboard-user') }}" class="{{ Route::is('dashboard-user') ? 'bg-indigo-800 text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium' : 'text-indigo-100 hover:bg-indigo-800 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium' }}">
@@ -128,6 +128,9 @@
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
             </svg>
+            <svg class="h-6 w-6 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
           </button>
           <div class="flex-1 flex justify-end px-4 sm:px-6">
             <div class="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
@@ -136,7 +139,9 @@
                 <div>
                   <button x-on:click="openP = ! openP" type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="">
+                    <svg class="h-8 w-8 rounded-full text-indigo-500 hover:text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
                   </button>
                 </div>
   

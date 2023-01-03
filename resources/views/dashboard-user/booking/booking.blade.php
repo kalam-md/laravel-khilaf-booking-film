@@ -10,7 +10,7 @@
           <h2 class="text-center font-medium">Screen</h2>
           <div class="mt-3 w-72 rounded-full border-t p-4 border-indigo-600 mx-auto blur-[0.7px]"></div>
 
-          <div class="mt-10 grid grid-cols-10 gap-y-3">
+          <div class="mt-10 grid grid-cols-10 gap-6">
             @foreach ($seats as $seat)
             <div class="mx-auto text-center">
               <div data-id="{{ $seat->id }}" data-name="{{ $seat->name }}" data-price="{{ $booking->price }}" class="{{ $selected->contains($seat->name) ? 'cursor-not-allowed w-8 h-8 border-solid border-2 border-indigo-600 rounded-md flex items-center justify-center' : 'seat cursor-pointer w-8 h-8 border-solid border-2 border-gray-400 rounded-md flex items-center justify-center' }}">

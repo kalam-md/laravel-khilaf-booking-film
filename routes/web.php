@@ -12,6 +12,11 @@ use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\User\MovieUserController;
 use App\Http\Controllers\User\BookingMovieController;
 use App\Http\Controllers\User\BookingHistoryController;
+use App\Models\Movie;
+use Illuminate\Support\Collection;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +30,9 @@ use App\Http\Controllers\User\BookingHistoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $movies = Movie::all();
+
+    return View::make('welcome')->with('movies', $movies);
 });
 
 // autentikasi
